@@ -1,7 +1,5 @@
-
-
 pipeline {
-  agent {
+  agent{
     docker {
       image 'node:16.16.0'
       args '-p 3000:3000'
@@ -11,20 +9,22 @@ pipeline {
   stages {    
         stage('Install') {
           steps {
-            sh 'npm install '
+           // sh 'docker build -t front_angular . '
             //sh 'npm cache clean -f '
-           // sh 'npm install -g n '
+            sh 'npm install '
           }
         }
-     stage ('test'){
+     stage ('Build'){
       steps{
-        sh 'npm run test'
+        sh 'npm run build --prod '
       }
-      /*post {
-          always {
-            junit "test-results.xml"
-          }
-      }*/
+    }
+    stage ('Snar'){
+      steps {
+        script {
+          sh 'npm run sonar '
+        }
+      }
     }
 
       }
