@@ -6,7 +6,7 @@ spec:  # What state you desire for the object
   selector:  # The selector field defines how the deployment finds which pod to manage       
     matchLabels:
       app: angular-k8s-deployment
-  replicas: 1  # Tells the deployment to run 3 pods matching the template      
+  replicas: 3  # Tells the deployment to run 3 pods matching the template      
   template:
     metadata:
       labels:  # Labels are used as indentifying attributes for objects such as pods and replication controller.      
@@ -14,7 +14,7 @@ spec:  # What state you desire for the object
     spec:
       containers:
         - name: angular-k8s-deployment
-          image: farahhachicha/emp_front:0.0.1-SNAPSHOT
+          image: farahhachicha/employee_manager:0.0.1-SNAPSHOT
           imagePullPolicy: Never
           ports:
             - containerPort: 80
@@ -32,4 +32,4 @@ spec:  # What state you desire for the object
           protocol: TCP   
       selector:           
         app: angular-k8s-deployment
-      type: LoadBalancer
+      type: NodePort

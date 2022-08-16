@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "test-karma": "ng test --code-coverage",
     "lint": "ng lint",
+    "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -23,6 +25,7 @@
     "@angular/router": "^9.1.4",
     "g": "^2.0.1",
     "rxjs": "~6.5.4",
+    "sonar-scanner": "^3.1.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
