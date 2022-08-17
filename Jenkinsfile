@@ -24,7 +24,7 @@ pipeline {
         
 
        environment {scannerHome = tool 'SonarQubeScanner'
-                    jdk = tool 'java8' }
+                    }
    
 
       steps {
