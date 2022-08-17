@@ -1,16 +1,16 @@
 pipeline {
-     environment{
-              registryCredential = 'dockerHub'
-              dockerimagename = 'farahhachicha/employee-angular'
-              dockerImage = ''
-       }
-  agent{
-    docker {
+     
+  agent any
+     tools {
+          nodejs "node"
+     }
+     //{
+   /* docker {
       image 'node:16.16.0'
       args '-p 3000:3000'
-    }
+    }*/
 
-  }
+ // }
   
   stages {    
         stage('Install') {
@@ -43,14 +43,14 @@ pipeline {
         
       }
     }
-    stage('Docker Build Image'){
+    /*stage('Docker Build Image'){
       steps{
         script {
           //sh 'docker build -t froont .'
           dockerImage = docker.build dockerimagename
         }
       }
-    }
+    }*/
 
       }
   
