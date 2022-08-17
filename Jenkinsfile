@@ -28,7 +28,7 @@ pipeline {
    
 
       steps {
-                        withSonarQubeEnv('sonarqube'){
+                        withSonarQubeEnv('SonarQubeFront'){
                          
                           sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
 
