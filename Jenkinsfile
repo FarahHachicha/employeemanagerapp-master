@@ -29,7 +29,7 @@ pipeline {
 
       steps {
                         withSonarQubeEnv('SonarQubeFront'){
-                          sh '${jdk}/bin/java -version'
+                          sh '${jdk} -version'
                           sh '$JAVA_HOME/bin/java -version'
                           sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
 
