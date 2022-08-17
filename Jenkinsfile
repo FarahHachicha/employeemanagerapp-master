@@ -13,6 +13,11 @@ pipeline {
  // }
   
   stages {    
+       stage('vrsion'){
+            steps{
+                 sh 'npm version'
+            }
+       }
         stage('Install') {
           steps {
            // sh 'docker build -t front_angular . '
