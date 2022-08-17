@@ -19,11 +19,11 @@ pipeline {
         sh 'npm run build --prod '
       }
     }
-    stage ('Snar'){
+    stage ('Sonar'){
       steps {
-        script {
+      
           sh 'npm run sonar '
-        }
+        
       }
     }
 
