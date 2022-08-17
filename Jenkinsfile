@@ -28,9 +28,9 @@ pipeline {
    
 
       steps {
-                        withSonarQubeEnv('SonarQubeFront'){
+                        withSonarQubeEnv('sonarqube'){
                          
-                          sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
+                          sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=employeemanager'}
 
 
       
