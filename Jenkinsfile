@@ -6,6 +6,9 @@ pipeline {
     }
 
   }
+  tools {
+    jdk 'java'
+  }
   stages {    
         stage('Install') {
           steps {
