@@ -38,6 +38,13 @@ pipeline {
         
       }
     }
+    stage('Docker Build Image'){
+      steps{
+        script {
+          sh 'docker build -t froont .'
+        }
+      }
+    }
 
       }
   
