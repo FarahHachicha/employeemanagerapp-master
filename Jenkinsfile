@@ -23,19 +23,19 @@ pipeline {
       }
     }
     stage ('Sonar'){
-       environment {
+       /*environment {
       
          scannerHome = tool 'SonarQubeScanner'
-     }
+     }*/
 
 
       steps {
-                        withSonarQubeEnv('SonarQubeFront'){
-                          sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
+                      //  withSonarQubeEnv('SonarQubeFront'){
+                        //  sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
 
 
       
-         // sh 'npm run sonar '
+          sh 'npm run sonar '
         
       }
     }
