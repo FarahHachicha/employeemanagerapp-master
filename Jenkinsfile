@@ -21,18 +21,14 @@ pipeline {
       }
     }
     stage ('Sonar'){
-       environment {
-      
-         scannerHome = tool 'SonarQubeScanner'
-     }
-      tools {
-    jdk 'java'
-  }
+         tools {jdk "java"}
 
+       environment {scannerHome = tool 'SonarQubeScanner'}
+   
 
       steps {
                         withSonarQubeEnv('SonarQubeFront'){
-                          sh 'java -version'
+                          
                           sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
 
 
