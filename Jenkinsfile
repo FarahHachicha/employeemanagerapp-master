@@ -6,9 +6,7 @@ pipeline {
     }
 
   }
-  tools {
-    jdk 'java'
-  }
+  
   stages {    
         stage('Install') {
           steps {
@@ -27,10 +25,14 @@ pipeline {
       
          scannerHome = tool 'SonarQubeScanner'
      }
+      tools {
+    jdk 'java'
+  }
 
 
       steps {
                         withSonarQubeEnv('SonarQubeFront'){
+                          sh 'java -version'
                           sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
 
 
