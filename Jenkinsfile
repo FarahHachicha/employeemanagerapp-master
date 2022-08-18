@@ -1,9 +1,9 @@
 pipeline {
      
   agent any
-    tools {
+   /* tools {
           nodejs "node"
-     }
+     }*/
      //{
    /* docker {
       image 'node:16.16.0'
@@ -15,12 +15,12 @@ pipeline {
   stages {    
      
         stage('Install') {
-            /* agent {
+            agent {
                   docker {
                        image 'node:16.16.0'
                        args '-p 3000:3000'
                   }
-             }*/
+             }
           steps {
            // sh 'docker build -t front_angular . '
             //sh 'npm cache clean -f '
@@ -75,37 +75,7 @@ pipeline {
         
       }
     }
-    stage('Build Docker Image'){
-      steps{
-        script {
-          sh 'docker build -t froont .'
-       //   dockerImage = docker.build dockerimagename
-        }
-      }
-    }
-       stage ('Push Docker Image'){
-            steps {
-                 script {
-                      sh 'docker tag froont farahhachicha/employee-angular '
-                      sh 'docker push farahhachicha/employee-angular ' 
-                 }
-            }
-       }
-       stage ('Pull Docker Image'){
-            steps {
-                 script {
-                      sh 'docker pull farahhachicha/employee-angular' 
-                 }
-            }
-       }
-       stage('Deploy to kubernetes'){
-            steps {
-                  script {
-                           kubernetesDeploy(configs: "deploy.yaml", kubeconfigId: "kube")
-                            }
-                 
-            }
-       }
+   
 
       }
   
