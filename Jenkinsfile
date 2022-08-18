@@ -1,9 +1,9 @@
 pipeline {
      
   agent any
-    /* tools {
+    tools {
           nodejs "node"
-     }*/
+     }
      //{
    /* docker {
       image 'node:16.16.0'
@@ -15,12 +15,12 @@ pipeline {
   stages {    
      
         stage('Install') {
-             agent {
+            /* agent {
                   docker {
                        image 'node:16.16.0'
                        args '-p 3000:3000'
                   }
-             }
+             }*/
           steps {
            // sh 'docker build -t front_angular . '
             //sh 'npm cache clean -f '
