@@ -91,8 +91,18 @@ pipeline {
                  }
             }
        }
+       stage ('Pull Docker Image'){
+            steps {
+                 script {
+                      sh 'docker pull farahhachicha/employee-angular' 
+                 }
+            }
+       }
        stage('Deploy to kubernetes'){
             steps {
+                  script {
+                           kubernetesDeploy(configs: "deploy.yaml", kubeconfigId: "kube")
+                            }
                  
             }
        }
