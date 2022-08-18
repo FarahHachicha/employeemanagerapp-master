@@ -46,8 +46,8 @@ pipeline {
                   }
              }
             steps {
-                 sh 'apk add chromium'
-                 sh 'npm run test'
+             
+                 sh 'npm test'
             }
             
        }
