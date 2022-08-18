@@ -38,7 +38,7 @@ pipeline {
         sh 'npm run build --prod '
       }
     }
-       stage ('Test'){
+     /*  stage ('Test'){
             agent {
                   docker {
                        image 'node:16.16.0'
@@ -50,7 +50,7 @@ pipeline {
                  sh 'google-chrome && npm test'
             }
             
-       }
+       }*/
     stage ('Sonar'){
            agent {
                   docker {
