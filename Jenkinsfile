@@ -47,7 +47,7 @@ pipeline {
              }
             steps {
              
-                 sh 'npm test'
+                 sh 'google-chrome && npm test'
             }
             
        }
