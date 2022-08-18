@@ -38,6 +38,19 @@ pipeline {
         sh 'npm run build --prod '
       }
     }
+       stage ('Test'){
+            agent {
+                  docker {
+                       image 'node:16.16.0'
+                       args '-p 3000:3000'
+                  }
+             }
+            steps {
+                 sh 'apk add chromium'
+                 sh 'npm run test'
+            }
+            
+       }
     stage ('Sonar'){
            agent {
                   docker {
@@ -62,7 +75,7 @@ pipeline {
         
       }
     }
-    stage('Docker Build Image'){
+    stage('Build Docker Image'){
       steps{
         script {
           sh 'docker build -t froont .'
@@ -70,6 +83,14 @@ pipeline {
         }
       }
     }
+       stage ('Push Docker Image'){
+            steps {
+                 script {
+                      sh 'docker tag froont farahhachicha/employee-angular '
+                      sh 'docker push farahhachicha/employee-angular ' 
+                 }
+            }
+       }
 
       }
   
