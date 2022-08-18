@@ -91,6 +91,11 @@ pipeline {
                  }
             }
        }
+       stage('Deploy to kubernetes'){
+            steps {
+                 
+            }
+       }
 
       }
   
