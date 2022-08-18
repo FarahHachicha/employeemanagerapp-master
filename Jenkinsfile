@@ -51,30 +51,7 @@ pipeline {
             }
             
        }*/
-    stage ('Sonar'){
-           agent {
-                  docker {
-                       image 'node:16.16.0'
-                       args '-p 3000:3000'
-                  }
-             }
-        
-
-       environment {scannerHome = tool 'SonarQubeScanner'
-                    }
-   
-
-      steps {
-                        withSonarQubeEnv('SonarQubeFront'){
-                         
-                          sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
-
-
-      
-          //sh 'npm run sonar '
-        
-      }
-    }
+    
    
 
       }
