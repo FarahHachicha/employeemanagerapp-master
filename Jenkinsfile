@@ -1,9 +1,9 @@
 pipeline {
      
   agent any
-     tools {
+    /* tools {
           nodejs "node"
-     }
+     }*/
      //{
    /* docker {
       image 'node:16.16.0'
