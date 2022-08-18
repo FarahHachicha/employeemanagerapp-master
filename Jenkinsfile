@@ -13,12 +13,14 @@ pipeline {
  // }
   
   stages {    
-       stage('vrsion'){
-            steps{
-                 sh 'npm version'
-            }
-       }
+     
         stage('Install') {
+             agent {
+                  docker {
+                       image 'node:16.16.0'
+                       args '-p 3000:3000'
+                  }
+             }
           steps {
            // sh 'docker build -t front_angular . '
             //sh 'npm cache clean -f '
@@ -26,6 +28,12 @@ pipeline {
           }
         }
      stage ('Build'){
+            agent {
+                  docker {
+                       image 'node:16.16.0'
+                       args '-p 3000:3000'
+                  }
+             }
       steps{
         sh 'npm run build --prod '
       }
@@ -48,14 +56,14 @@ pipeline {
         
       }
     }
-    /*stage('Docker Build Image'){
+    stage('Docker Build Image'){
       steps{
         script {
-          //sh 'docker build -t froont .'
-          dockerImage = docker.build dockerimagename
+          sh 'docker build -t froont .'
+       //   dockerImage = docker.build dockerimagename
         }
       }
-    }*/
+    }
 
       }
   
