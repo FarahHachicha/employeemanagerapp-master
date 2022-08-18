@@ -26,7 +26,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['/usr/bin/google-chrome-stable'],
+    browsers: ['/usr/bin/google-chrome'],
     singleRun: false,
     restartOnFileChange: true
   });
