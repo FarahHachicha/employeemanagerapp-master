@@ -38,19 +38,64 @@ pipeline {
         sh 'npm run build --prod '
       }
     }
-     /*  stage ('Test'){
-            agent {
+    stage ('Sonar'){
+           agent {
                   docker {
                        image 'node:16.16.0'
                        args '-p 3000:3000'
                   }
              }
+        
+
+       environment {scannerHome = tool 'SonarQubeScanner'
+                    }
+   
+
+      steps {
+                        withSonarQubeEnv('SonarQubeFront'){
+                         
+                          sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
+
+
+      
+          //sh 'npm run sonar '
+        
+      }
+    }
+
+
+ stage('Build Docker Image'){
+      steps{
+        script {
+          sh 'docker build -t froont .'
+       //   dockerImage = docker.build dockerimagename
+        }
+      }
+    }
+       stage ('Push Docker Image'){
             steps {
-             
-                 sh 'google-chrome && npm test'
+                 script {
+                      sh 'docker tag froont farahhachicha/employee-angular '
+                      sh 'docker push farahhachicha/employee-angular ' 
+                 }
             }
-            
-       }*/
+       }
+       stage ('Remove Docker Image'){
+            steps {
+                 script {
+                      sh 'docker pull farahhachicha/employee-angular' 
+                 }
+            }
+       }
+       stage('Deploy to kubernetes'){
+            steps {
+                  script {
+                           kubernetesDeploy(configs: "deploy.yaml", kubeconfigId: "kube")
+                            }
+                 
+            }
+       }
+
     
    
 
