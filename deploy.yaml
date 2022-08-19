@@ -1,20 +1,20 @@
-apiVersion: apps/v1 # For versions before 1.9.0 use apps/v1beta2
+apiVersion: apps/v1 
 kind: Deployment    
-metadata:   # Data that helps  uniquely identify the object (using name, UID and namespace)          
+metadata:           
   name: angular-k8s-deployment
-spec:  # What state you desire for the object              
-  selector:  # The selector field defines how the deployment finds which pod to manage       
+spec:              
+  selector:       
     matchLabels:
       app: angular-k8s-deployment
-  replicas: 3  # Tells the deployment to run 3 pods matching the template      
+  replicas: 3      
   template:
     metadata:
-      labels:  # Labels are used as indentifying attributes for objects such as pods and replication controller.      
+      labels:      
         app: angular-k8s-deployment
     spec:
       containers:
         - name: angular-k8s-deployment
-          image: farahhachicha/employee_manager:0.0.1-SNAPSHOT
+          image: farahhachicha/employee-angular
           imagePullPolicy: Never
           ports:
             - containerPort: 80
@@ -27,8 +27,8 @@ spec:  # What state you desire for the object
         name: angular-k8s-deployment
     spec:
       ports:
-        - port: 80        # access the service via external port no
-          targetPort: 80  # port number that container listening on
+        - port: 80      
+          targetPort: 80  
           protocol: TCP   
       selector:           
         app: angular-k8s-deployment
