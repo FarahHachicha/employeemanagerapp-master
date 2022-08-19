@@ -1,19 +1,6 @@
-pipeline {
-     
-  agent any
-   /* tools {
-          nodejs "node"
-     }*/
-     //{
-   /* docker {
-      image 'node:16.16.0'
-      args '-p 3000:3000'
-    }*/
-
- // }
-  
+pipeline {    
+  agent any 
   stages {    
-     
         stage('Install') {
             agent {
                   docker {
@@ -45,17 +32,15 @@ pipeline {
              }
         
 
-       environment {scannerHome = tool 'SonarQubeScanner'
+       environment {
+            scannerHome = tool 'SonarQubeScanner'
                     }
-   
-
       steps {
                         withSonarQubeEnv('SonarQubeFront'){
                          
                           sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
       }
     }
-
 
  stage('Build Docker Image'){
       steps{
