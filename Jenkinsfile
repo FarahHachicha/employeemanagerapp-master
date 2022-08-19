@@ -22,8 +22,6 @@ pipeline {
                   }
              }
           steps {
-           // sh 'docker build -t front_angular . '
-            //sh 'npm cache clean -f '
             sh 'npm install '
           }
         }
@@ -38,7 +36,7 @@ pipeline {
         sh 'npm run build --prod '
       }
     }
-    stage ('Sonar'){
+    stage ('SonarQube analysis'){
            agent {
                   docker {
                        image 'node:16.16.0'
@@ -55,11 +53,6 @@ pipeline {
                         withSonarQubeEnv('SonarQubeFront'){
                          
                           sh '${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=sonar-front'}
-
-
-      
-          //sh 'npm run sonar '
-        
       }
     }
 
@@ -68,7 +61,6 @@ pipeline {
       steps{
         script {
           sh 'docker build -t froont .'
-       //   dockerImage = docker.build dockerimagename
         }
       }
     }
