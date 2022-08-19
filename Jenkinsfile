@@ -43,14 +43,14 @@ pipeline {
          stage('Build Docker Image'){
                steps{
                    script {
-                       sh 'docker build -t froont .'
+                       sh 'docker build -t frontend .'
               }
           }
        }
        stage ('Push Docker Image'){
             steps {
                  script {
-                      sh 'docker tag froont farahhachicha/employee-angular '
+                      sh 'docker tag frontend farahhachicha/employee-angular '
                       sh 'docker push farahhachicha/employee-angular ' 
                  }
             }
@@ -58,7 +58,7 @@ pipeline {
       stage ('Remove Docker Image'){
             steps {
                  script {
-                      sh 'docker pull farahhachicha/employee-angular' 
+                      sh 'docker rmi frontend ' 
                  }
             }
        }
