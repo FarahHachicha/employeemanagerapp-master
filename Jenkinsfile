@@ -55,7 +55,7 @@ pipeline {
                  }
             }
        }
-      /* stage ('Remove Docker Image'){
+      stage ('Remove Docker Image'){
             steps {
                  script {
                       sh 'docker pull farahhachicha/employee-angular' 
@@ -69,11 +69,7 @@ pipeline {
                             }
                  
             }
-       }*/
-
-    
-   
-
+       }
       }
   
 }
