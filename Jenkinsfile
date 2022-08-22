@@ -43,22 +43,23 @@ pipeline {
          stage('Build Docker Image'){
                steps{
                    script {
-                       sh 'docker build -t frontend .'
+                       sh 'docker build -t jenkinsfront .'
               }
           }
        }
        stage ('Push Docker Image'){
             steps {
                  script {
-                      sh 'docker tag frontend farahhachicha/employee-angular '
-                      sh 'docker push farahhachicha/employee-angular ' 
+                      sh 'docker tag jenkinsfront farahhachicha/jenkinsfront '
+                      sh 'docker push farahhachicha/jenkinsfront ' 
                  }
             }
        }
       stage ('Remove Docker Image'){
             steps {
                  script {
-                      sh 'docker rmi frontend ' 
+                      sh 'docker rmi jenkinsfront ' 
+                      sh 'docker rmi farahhachicha/jenkinsfront '
                  }
             }
        }
