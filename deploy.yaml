@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: angular-k8s-deployment
-          image: farahhachicha/jenkinsfront:0.0.1-SNAPSHOT
+          image: farahhachicha/jenkinsfront
           imagePullPolicy: Never
           ports:
             - containerPort: 80
