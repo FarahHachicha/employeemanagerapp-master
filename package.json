@@ -10,8 +10,8 @@
     "lint": "ng lint",
     "sonar": "sonar-scanner",
     "e2e": "ng e2e",
-    "build:prod": "ng build --prod"
-
+    "build:prod": "ng build --prod",
+    "ci:test": "ng test --watch=false --browsers=ChromeHeadlessCustom --code-coverage"
   },
   "private": true,
   "dependencies": {
